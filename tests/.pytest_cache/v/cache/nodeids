@@ -1,0 +1,7 @@
+[
+  "test_route.py::test_ajout",
+  "test_route.py::test_mise_a_jour_avance",
+  "test_vehicule.py::test_avancer",
+  "test_vehicule.py::test_avancer_depasse_longueur_route",
+  "test_vehicule.py::testroute"
+]

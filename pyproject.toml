@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "Cython>=0.29.0", "numpy>=1.21.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simulateur-trafic-ahmed-hamed-2025"
+version = "1.0.0"
+description = "A traffic simulation application"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "matplotlib>=3.5.0",
+    "numpy>=1.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "cython>=0.29.0",
+    "numba>=0.50.0",
+]
+optimize = [
+    "cython>=0.29.0",
+    "numba>=0.50.0",
+]
+
+[project.scripts]
+simulateur-trafic = "simulateur_trafic.main:main"
+
+[project.urls]
+Homepage = "https://github.com/ahmedhdhd/simulateur_trafic"
+Repository = "https://github.com/ahmedhdhd/simulateur_trafic"
