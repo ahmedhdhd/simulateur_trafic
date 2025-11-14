@@ -1,5 +1,6 @@
 import sys
 import os
+from tkinter import N
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from simulateur_trafic.exceptions import  MiseAJourRouteError
@@ -28,7 +29,21 @@ class Route:
         self.longueur = longueur
         self.limite_vitesse = limite_vitesse
         self.vehicules = []
-    
+        self.feu_rouge = None
+        self.position_feu_rouge = None
+        
+    def ajouter_feu_rouge(self, feu, position=None):
+        # TODO : ajouter le feu à la route à la position donnée
+        self.feu_rouge = feu
+        if position is not None:
+            self.position_feu_rouge = position
+            
+    def update(self, dt=1.0):
+        # TODO : mettre à jour le feu et déplacer les véhicules
+        if self.feu_rouge:
+            self.feu_rouge.avancer_temps(dt)
+            self.mettre_a_jour_vehicules(dt)
+        
     def ajouter_vehicule(self, vehicule):
         """
         Ajoute un véhicule à la route.
