@@ -1,27 +1,35 @@
-name: CI - Simulateur Routier
+name: CI
 
 on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   tests:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
       - name: Install Poetry
-        run: pip install poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      - name: Regenerate poetry.lock
+        run: poetry lock --no-interaction
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-interaction
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: poetry run pytest --cov=simulateur_trafic --cov-report=term-missing
